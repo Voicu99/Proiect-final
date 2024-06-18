@@ -10,69 +10,7 @@ void writeStringWithDelay(const std::string& str, int delayMilliseconds)
 }
 
 
-/*
-WavFile loadWavFile(const char* filename) {
-    WavFile wav;
-    // Open the file
-    HMMIO hMmio = mmioOpenA(const_cast<char*>(filename), nullptr, MMIO_READ | MMIO_ALLOCBUF);
-    if (!hMmio) throw std::runtime_error("Could not open file");
 
-    MMCKINFO ckInRiff;
-    ckInRiff.fccType = mmioFOURCC('W', 'A', 'V', 'E');
-    mmioDescend(hMmio, &ckInRiff, nullptr, MMIO_FINDRIFF);
-
-    MMCKINFO ckIn;
-    ckIn.ckid = mmioFOURCC('f', 'm', 't', ' ');
-    mmioDescend(hMmio, &ckIn, &ckInRiff, MMIO_FINDCHUNK);
-    mmioRead(hMmio, reinterpret_cast<HPSTR>(&wav.format), sizeof(wav.format));
-    mmioAscend(hMmio, &ckIn, 0);
-
-    ckIn.ckid = mmioFOURCC('d', 'a', 't', 'a');
-    mmioDescend(hMmio, &ckIn, &ckInRiff, MMIO_FINDCHUNK);
-    wav.data.resize(ckIn.cksize);
-    mmioRead(hMmio, reinterpret_cast<HPSTR>(wav.data.data()), ckIn.cksize);
-
-    mmioClose(hMmio, 0);
-    return wav;
-}
-
-
-void playWavFile(WavFile& wav) {
-    HWAVEOUT hWaveOut;
-    WAVEHDR waveHdr;
-    ZeroMemory(&waveHdr, sizeof(WAVEHDR));
-    waveHdr.dwBufferLength = wav.data.size();
-    waveHdr.lpData = reinterpret_cast<LPSTR>(wav.data.data());
-
-    waveOutOpen(&hWaveOut, WAVE_MAPPER, &wav.format, 0, 0, CALLBACK_NULL);
-    waveOutPrepareHeader(hWaveOut, &waveHdr, sizeof(WAVEHDR));
-    waveOutWrite(hWaveOut, &waveHdr, sizeof(WAVEHDR));
-
-    // Fade out effect
-    for (int i = 100; i >= 0; --i) {
-        double volume = i / 100.0;
-        for (size_t j = 0; j < wav.data.size(); j += 2) {
-            SHORT* sample = reinterpret_cast<SHORT*>(&wav.data[j]);
-            *sample = static_cast<SHORT>(*sample * volume);
-        }
-        waveOutWrite(hWaveOut, &waveHdr, sizeof(WAVEHDR));
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
-    }
-
-    waveOutUnprepareHeader(hWaveOut, &waveHdr, sizeof(WAVEHDR));
-    waveOutClose(hWaveOut);
-}
-
-void TryPlayWawFile(std::string wav_name) {
-    try {
-        std::string filename = "../Console_RPG_/Sounds/" + wav_name + ".wav";  // Concatenate to form the full filename
-        WavFile wav = loadWavFile(filename.c_str());  // Pass the C-string to loadWavFile
-        playWavFile(wav);
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-}*/
 
 
 WavFile loadWavFile(const char* filename) {

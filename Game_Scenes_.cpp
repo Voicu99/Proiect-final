@@ -145,40 +145,7 @@ void _Game_Scene_05_(Player_Class_* LV_Player_, Game_Intro_* LV_GameIntro_)
     }
 
     
-    /*switch (LV_GameIntro_->_getPathIndex())
-    {
-    case 1:
-        Enemy * BP_Enemy_ = new Enemy(30, 10, "Goblin");
-
-        std::cout << "  Enemy is a" << BP_Enemy_->_getEnemyName() << 
-            ", it has Power of " << BP_Enemy_->_getEnemyDealDamage() << 
-            " and Health of " << BP_Enemy_->_getEnemyHealth() << std::endl;
-
-        _Game_Battle_Enemy_(LV_Player_, LV_GameIntro_, BP_Enemy_);
-        break;
-    case 2:
-        Enemy * BP_Enemy_ = new Enemy(90, 40, "Dragon");
-
-        std::cout << "  Enemy is a" << BP_Enemy_->_getEnemyName() <<
-            ", it has Power of " << BP_Enemy_->_getEnemyDealDamage() <<
-            " and Health of " << BP_Enemy_->_getEnemyHealth() << std::endl;
-
-        _Game_Battle_Enemy_(LV_Player_, LV_GameIntro_, BP_Enemy_);
-        break;
-    case 3:
-        Enemy * BP_Enemy_ = new Enemy(50, 80, "Giant Spider");
-
-        std::cout << "  Enemy is a" << BP_Enemy_->_getEnemyName() <<
-            ", it has Power of " << BP_Enemy_->_getEnemyDealDamage() <<
-            " and Health of " << BP_Enemy_->_getEnemyHealth() << std::endl;
-
-        _Game_Battle_Enemy_(LV_Player_, LV_GameIntro_, BP_Enemy_);
-        break;
-    default:
-        break;
-    }*/
-
-    //system("CLS");
+    
 }
 
 void _Game_Battle_Enemy_(Player_Class_* LV_Player_, Game_Intro_* LV_GameIntro_, Enemy* LV_Enemy_, WavFile& LV_Wav, std::atomic<bool>& LV_StopFlag, std::thread& LV_SoundThread)
